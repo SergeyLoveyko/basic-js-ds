@@ -71,7 +71,7 @@ module.exports = class BinarySearchTree {
   }
 
   find(data) {
-    return findWithin(this.node, data);
+    return findWithin(this.base, data);
 
     function findWithin(node, data) {
       if (!node) {
@@ -89,7 +89,7 @@ module.exports = class BinarySearchTree {
   }
 
   remove(data) {
-    this.base = removeNode(this.base, data);  //  Удали УЗЕЛ. В каком поддереве (this.root) и с каким ЗНАЧЕНИЕМ (data)
+    this.root = removeNode(this.base, data);  //  Удали УЗЕЛ. В каком поддереве (this.root) и с каким ЗНАЧЕНИЕМ (data)
 
     function removeNode(node, data) {
       if (!node) {        //  Если у нас не было УЗЛА. Т.е. там был  "null"
@@ -114,7 +114,7 @@ module.exports = class BinarySearchTree {
         }
 
         if (!node.right) {    //  Если у нас нет ПРАВОГО ПОТОМКА
-          node = node.right;  //  Вместо текущего УЗЛА, который был найден. Мы положим всё ЕГО ДЕРЕВО
+          node = node.left;  //  Вместо текущего УЗЛА, который был найден. Мы положим всё ЕГО ДЕРЕВО
           return node;        //  И ВОЗВРАЩАЕМ обновлённый УЗЕЛ
         }
 
